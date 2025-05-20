@@ -1,6 +1,6 @@
 import tensorflow as tf
 
-(x_train, y_train), (x_test, y_test) = tf.keras.imdb.load_data(num_words=10000)
+(x_train, y_train), (x_test, y_test) = tf.keras.datasets.imdb.load_data(num_words=10000)
 
 x_train = tf.keras.preprocessing.sequence.pad_sequences(x_train, maxlen=100)
 x_test = tf.keras.preprocessing.sequence.pad_sequences(x_test, maxlen=100)
