@@ -11,7 +11,8 @@ def simple_rnn():
     model.add(tf.keras.layers.SimpleRNN(32, activation='tanh'))
     model.add(tf.keras.layers.Dense(1, activation='sigmoid'))
     model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
-    return model.fit(x_train, y_train, epochs=5, batch_size=64, validation_split=0.2)
+    model.fit(x_train, y_train, epochs=5, batch_size=64, validation_split=0.2, verbose=0)
+    return model.evaluate(x_test, y_test) 
 
 def bidirectional_rnn():
     model = tf.keras.models.Sequential()
@@ -19,7 +20,8 @@ def bidirectional_rnn():
     model.add(tf.keras.layers.Bidirectional(tf.keras.layers.SimpleRNN(32, activation='tanh')))
     model.add(tf.keras.layers.Dense(1, activation='sigmoid'))
     model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
-    return model.fit(x_train, y_train, epochs=5, batch_size=64, validation_split=0.2)
+    model.fit(x_train, y_train, epochs=5, batch_size=64, validation_split=0.2, verbose=0)
+    return model.evaluate(x_test, y_test) 
 
 def lstm():
     model = tf.keras.models.Sequential()
@@ -27,7 +29,8 @@ def lstm():
     model.add(tf.keras.layers.LSTM(32, activation='tanh'))
     model.add(tf.keras.layers.Dense(1, activation='sigmoid'))
     model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
-    return model.fit(x_train, y_train, epochs=5, batch_size=64, validation_split=0.2)
+    model.fit(x_train, y_train, epochs=5, batch_size=64, validation_split=0.2, verbose=0)
+    return model.evaluate(x_test, y_test)
 
 def bidirectional_lstm():
     model = tf.keras.models.Sequential()
@@ -35,7 +38,8 @@ def bidirectional_lstm():
     model.add(tf.keras.layers.Bidirectional(tf.keras.layers.LSTM(32, activation='tanh')))
     model.add(tf.keras.layers.Dense(1, activation='sigmoid'))
     model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
-    return model.fit(x_train, y_train, epochs=5, batch_size=64, validation_split=0.2)
+    model.fit(x_train, y_train, epochs=5, batch_size=64, validation_split=0.2, verbose=0)
+    return model.evaluate(x_test, y_test)
 
 def gru():
     model = tf.keras.models.Sequential()
@@ -43,7 +47,8 @@ def gru():
     model.add(tf.keras.layers.GRU(32, activation='tanh'))
     model.add(tf.keras.layers.Dense(1, activation='sigmoid'))
     model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
-    return model.fit(x_train, y_train, epochs=5, batch_size=64, validation_split=0.2)
+    model.fit(x_train, y_train, epochs=5, batch_size=64, validation_split=0.2, verbose=0)
+    return model.evaluate(x_test, y_test)
 
 
 def bidirectional_gru():
@@ -52,25 +57,26 @@ def bidirectional_gru():
     model.add(tf.keras.layers.Bidirectional(tf.keras.layers.GRU(32, activation='tanh')))
     model.add(tf.keras.layers.Dense(1, activation='sigmoid'))
     model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
-    return model.fit(x_train, y_train, epochs=5, batch_size=64, validation_split=0.2)
+    model.fit(x_train, y_train, epochs=5, batch_size=64, validation_split=0.2, verbose=0)
+    return model.evaluate(x_test, y_test)
 
 
-history_simple_rnn = simple_rnn()
-history_bidirectional_rnn = bidirectional_rnn()
-history_lstm = lstm()
-history_bidirectional_lstm = bidirectional_lstm()
-history_gru = gru()
-history_bidirectional_gru = bidirectional_gru()
+test_loss, test_accuracy = simple_rnn()
+print("Test Accuracy (Simple RNN):", test_accuracy)
+print("Test Loss (Simple RNN):", test_loss)
+test_loss, test_accuracy = bidirectional_rnn()
+print("Test Accuracy (Bidirectional RNN):", test_accuracy)
+print("Test Loss (Bidirectional RNN):", test_loss)
+test_loss, test_accuracy = lstm()
+print("Test Accuracy (LSTM):", test_accuracy)
+print("Test Loss (LSTM):", test_loss)
+test_loss, test_accuracy = bidirectional_lstm()
+print("Test Accuracy (Bidirectional LSTM):", test_accuracy)
+print("Test Loss (Bidirectional LSTM):", test_loss)
+test_loss, test_accuracy = gru()
+print("Test Accuracy (GRU):", test_accuracy)
+print("Test Loss (GRU):", test_loss)
+test_loss, test_accuracy = bidirectional_gru()
+print("Test Accuracy (Bidirectional GRU):", test_accuracy)
+print("Test Loss (Bidirectional GRU):", test_loss)
 
-print("Training with simple RNN:")
-print(history_simple_rnn.history)
-print("Training with bidirectional RNN:")
-print(history_bidirectional_rnn.history)
-print("Training with LSTM:")
-print(history_lstm.history)
-print("Training with bidirectional LSTM:")
-print(history_bidirectional_lstm.history)
-print("Training with GRU:")
-print(history_gru.history)
-print("Training with bidirectional GRU:")
-print(history_bidirectional_gru.history)

@@ -30,5 +30,9 @@ def build_model(pretrained_model):
 base_model = tf.keras.applications.MobileNetV2(input_shape=(224, 224, 3), include_top=False, weights='imagenet')
 base_model.trainable= False
 history = build_model(base_model)
+
 print("Training with MobileNetV2:")
-print(history.history)
+test_loss, test_accuracy = model.evaluate(x_test, y_test)
+print("Test Accuracy:", test_accuracy)
+print("Test Loss:", test_loss)
+

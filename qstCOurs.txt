@@ -1,0 +1,16 @@
+* Comparer les résultats de la convolution avec et sans padding (VALID et SAME).
+    -> Sortie VALID : La sortie sera plus petite que l'entrée. Par exemple, si
+    l'entrée est de taille 5x5 et que le filtre est de taille 3x3, la sortie sera de
+    taille 3x3.
+    -> Sortie SAME : La sortie aura la même taille que l'entrée. Dans ce cas, la
+    sortie sera de taille 5x5, car le padding est ajouté autour de l'image pour
+    permettre au filtre de couvrir tous les pixels.
+
+* Quelle est la formule du padding P à utiliser pour garantir que la taille de sortie après 
+une convolution reste identique à celle de l'entrée ? Justifier votre réponse.
+    -> P = (F - 1)/2 où ( F ) est la taille du filtre.
+
+* Expliquer pourquoi la normalisation batch est importante pour l’entraînement des CNN.
+    -> La normalisation batch stabilise et accélère l'entraînement des CNN tout en améliorant 
+    leur capacité de généralisation.
+
