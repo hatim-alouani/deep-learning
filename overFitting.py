@@ -18,7 +18,7 @@ datagen = tf.keras.preprocessing.image.ImageDataGenerator(
 train_generator = datagen.flow(x_train, y_train, batch_size=32)
 
 model = tf.keras.models.Sequential()
-model.add(tf.keras.layers.Conv2D(filters=32, kernel_size=3, activation='relu', input_shape=[28, 28, 1]))
+model.add(tf.keras.layers.Conv2D(filters=32, kernel_size=3, activation='relu', input_shape=(28, 28, 1)))
 model.add(tf.keras.layers.MaxPool2D(pool_size=2, strides=2))
 model.add(tf.keras.layers.Conv2D(32, 3, activation='relu'))
 model.add(tf.keras.layers.MaxPool2D(pool_size=2, strides=2))
