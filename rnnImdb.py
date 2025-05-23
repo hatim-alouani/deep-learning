@@ -12,7 +12,7 @@ def simple_rnn():
     model.add(tf.keras.layers.Dense(1, activation='sigmoid'))
     model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
     model.fit(x_train, y_train, epochs=5, batch_size=64, validation_split=0.2, verbose=0)
-    return model.evaluate(x_test, y_test) 
+    return model.evaluate(x_test, y_test)
 
 def bidirectional_rnn():
     model = tf.keras.models.Sequential()

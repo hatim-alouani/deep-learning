@@ -33,5 +33,3 @@ test_loss, test_accuracy = model.evaluate(x_test, y_test)
 
 print("Test Accuracy:", test_accuracy)
 print("Test Loss:", test_loss)
-
-
